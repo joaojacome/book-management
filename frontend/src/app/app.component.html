@@ -1,0 +1,20 @@
+<div class="columns">
+  <div class="column is-one-quarter">
+    <aside class="menu">
+      <p class="menu-label">
+        Products
+      </p>
+      <ul class="menu-list">
+        <li>
+            <a routerLink="/books" routerLinkActive="is-active">Books</a>
+            <ul>
+              <li><a routerLink="/books/add"  routerLinkActive="is-active">Add a book</a></li>
+            </ul>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <div class="column is-three-quarters">
+    <router-outlet></router-outlet>
+  </div>
+</div>

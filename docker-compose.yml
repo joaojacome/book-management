@@ -1,0 +1,18 @@
+version: "3"
+
+volumes:
+    database_data:
+        driver: local
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "4000:8080"
+
+  backend:
+    build: ./backend
+    volumes:
+     - ./db:/usr/src/app/db
+    ports:
+      - "8080:8080"

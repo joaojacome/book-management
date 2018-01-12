@@ -1,0 +1,80 @@
+<h1 class="title">{{ create ? 'Add Book' : 'Update book' }}</h1>
+<form novalidate (ngSubmit)="onSubmit(book)" [formGroup]="book">
+  <div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <flash-message></flash-message>
+      <div class="columns">
+        <div class="column ">
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input class="input" [ngClass]="{'is-danger': validateField('title')}" type="text" placeholder="Title" maxlength="255" formControlName="title">
+            </div>
+            <p class="help is-danger" *ngIf="validateField('title') && errorRequired('title')">You have to insert a title.</p>
+            <p class="help is-danger" *ngIf="validateField('title') && errorMaxValue('title')">Title must be less than 255 characters.</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Author</label>
+            <div class="control">
+              <input class="input" [ngClass]="{'is-danger': validateField('author')}" type="text" placeholder="Author" maxlength="255"
+                formControlName="author">
+            </div>
+            <p class="help is-danger" *ngIf="validateField('author') && errorMaxValue('author')">Author must be less than 255 characters.</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              <textarea class="textarea" [ngClass]="{'is-danger': validateField('description')}" rows="5" row="5" placeholder="Description"
+                maxlength="255" formControlName="description"></textarea>
+            </div>
+            <p class="help is-danger" *ngIf="validateField('description') && errorMaxValue('description')">Description must be less than 255 characters.</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Price</label>
+            <div class="control">
+              <input class="input" [ngClass]="{'is-danger': validateField('price')}" type="number" step=".01" min="0.01" max="1000.00"
+                placeholder="Price" formControlName="price">
+            </div>
+            <p class="help is-danger" *ngIf="validateField('price') && errorRequired('price')">You must specify a price.</p>
+            <p class="help is-danger" *ngIf="validateField('price') && errorMaxValue('price')">The price must be under 1000.00.</p>
+            <p class="help is-danger" *ngIf="validateField('price') && errorMinValue('price')">The price must be over 0.01.</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary" type="submit">
+                <span class="icon is-small">
+                  <i class="fa fa-check"></i>
+                </span>
+                <span>{{ create ? 'Add book!' : 'Update book!'}}</span>
+              </button>
+            </div>
+            <div class="control">
+              <button class="button is-danger" type="button" (click)="cancel()">
+                <span class="icon is-small">
+                  <i class="fa fa-times"></i>
+                </span>
+                <span>Cancel</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

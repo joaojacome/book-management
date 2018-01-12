@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~bulma/css/bulma.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #333333
+}
+
+.container {
+  background: #fff;
+  border-radius: 2px;
+  padding: 10px;
+}
